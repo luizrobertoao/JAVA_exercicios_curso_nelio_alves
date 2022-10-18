@@ -5,39 +5,25 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int codigoItem;
-        int quantidadeItens;
-        double preco;
+        double valor;
+        int auxiliar;
+
+        System.out.println("Digite um valor entre 0 e 100:");
+        valor = sc.nextDouble();
+
+        auxiliar = (int)valor;
 
 
-        System.out.println("Digite o codigo do item:");
-        codigoItem = sc.nextInt();
-        System.out.println("Digite a quantidade de itens:");
-        quantidadeItens = sc.nextInt();
-
-        switch (codigoItem) {
-            case 1:
-                preco = quantidadeItens * 4.00;
-                System.out.printf("O valor a ser pago é de R$%.2f", preco);
-                break;
-            case 2:
-                preco = quantidadeItens * 4.50;
-                System.out.printf("O valor a ser pago é de R$%.2f", preco);
-                break;
-            case 3:
-                preco = quantidadeItens * 5.00;
-                System.out.printf("O valor a ser pago é de R$%.2f", preco);
-                break;
-            case 4:
-                preco = quantidadeItens * 2.00;
-                System.out.printf("O valor a ser pago é de R$%.2f", preco);
-                break;
-            case 5:
-                preco = quantidadeItens * 1.50;
-                System.out.printf("O valor a ser pago é de R$%.2f", preco);
-                break;
-            default:
-                System.out.println("Você não digitou um código válido.");
+        if (auxiliar < 25 && auxiliar >= 0) {
+            System.out.println("O valor está no intervalo (0, 25)");
+        } else if (auxiliar >= 25 && auxiliar < 50) {
+            System.out.println("O valor está no intervalo (25, 50)");
+        } else if (auxiliar >= 50 && auxiliar < 75) {
+            System.out.println("O valor está no intervalo (50, 75)");
+        } else if (auxiliar >= 75 && auxiliar <= 100) {
+            System.out.println("O valor está no intervalo (75, 100)");
+        } else {
+            System.out.println("O valor está fora do intervalo.");
         }
     }
 }
