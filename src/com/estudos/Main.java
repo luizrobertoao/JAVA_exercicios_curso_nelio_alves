@@ -7,23 +7,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        double numero1;
-        double numero2;
-        double verificador;
-        int auxiliar;
+        int horaInicial;
+        int horaFinal;
+        int duracao;
 
-        System.out.println("Digite o valor para o numero1:");
-        numero1 = sc.nextInt();
-        System.out.println("Digite o valor para o numero2:");
-        numero2 = sc.nextInt();
+        System.out.println("Digite a hora inical:");
+        horaInicial = sc.nextInt();
+        System.out.println("Digite a hora final:");
+        horaFinal = sc.nextInt();
 
-        verificador = numero1 / numero2;
-        auxiliar = (int) verificador;
-
-        if (verificador == auxiliar && verificador > 0) {
-            System.out.println("São multiplos");
+        if (horaInicial < horaFinal) {
+            duracao = horaFinal - horaInicial;
+            System.out.println("A duração do jogo foi de " + duracao + " horas.");
         } else {
-            System.out.println("Não são multiplos");
+            duracao = 24 - horaInicial + horaFinal;
+            System.out.println("A duração do jogo foi de " + duracao + " horas.");
         }
     }
 }
