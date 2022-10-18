@@ -7,21 +7,39 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int horaInicial;
-        int horaFinal;
-        int duracao;
+        int codigoItem;
+        int quantidadeItens;
+        double preco;
 
-        System.out.println("Digite a hora inical:");
-        horaInicial = sc.nextInt();
-        System.out.println("Digite a hora final:");
-        horaFinal = sc.nextInt();
 
-        if (horaInicial < horaFinal) {
-            duracao = horaFinal - horaInicial;
-            System.out.println("A duração do jogo foi de " + duracao + " horas.");
-        } else {
-            duracao = 24 - horaInicial + horaFinal;
-            System.out.println("A duração do jogo foi de " + duracao + " horas.");
+        System.out.println("Digite o codigo do item:");
+        codigoItem = sc.nextInt();
+        System.out.println("Digite a quantidade de itens:");
+        quantidadeItens = sc.nextInt();
+
+        switch (codigoItem) {
+            case 1:
+                preco = quantidadeItens * 4.00;
+                System.out.printf("O valor a ser pago é de R$%.2f", preco);
+                break;
+            case 2:
+                preco = quantidadeItens * 4.50;
+                System.out.printf("O valor a ser pago é de R$%.2f", preco);
+                break;
+            case 3:
+                preco = quantidadeItens * 5.00;
+                System.out.printf("O valor a ser pago é de R$%.2f", preco);
+                break;
+            case 4:
+                preco = quantidadeItens * 2.00;
+                System.out.printf("O valor a ser pago é de R$%.2f", preco);
+                break;
+            case 5:
+                preco = quantidadeItens * 1.50;
+                System.out.printf("O valor a ser pago é de R$%.2f", preco);
+                break;
+            default:
+                System.out.println("Você não digitou um código válido.");
         }
     }
 }
