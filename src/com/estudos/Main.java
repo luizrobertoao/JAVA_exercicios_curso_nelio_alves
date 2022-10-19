@@ -1,6 +1,7 @@
 package com.estudos;
 
-import com.estudos.entities.Employee;
+
+import com.estudos.entities.Student;
 
 import java.util.Scanner;
 
@@ -8,20 +9,24 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Employee employee = new Employee();
+        Student student = new Student();
 
-        System.out.println("Type employee's name:");
-        employee.name = sc.nextLine();
-        System.out.println("Type employee's salary:");
-        employee.grossSalary = sc.nextDouble();
-        System.out.println("Type employee's tax value:");
-        employee.tax = sc.nextDouble();
+        System.out.println("Digite o nome do aluno:");
+        student.name = sc.nextLine();
+        System.out.println("Digite a nota no primeiro trimestre");
+        student.notaPrimeiroTrimestre = sc.nextDouble();
+        System.out.println("Digite a nota no segundo trimestre");
+        student.notaSegundoTrimestre = sc.nextDouble();
+        System.out.println("Digite a nota no terceiro trimestre");
+        student.notaTerceiroTrimestre = sc.nextDouble();
 
-        employee.printEmployee();
+        student.calculaMedia();
 
-        System.out.println("Which percentage to increase salary?");
-        employee.increaseSalary(sc.nextDouble());
+        System.out.println("O aluno " + student.name + " obteve media: " + student.media);
 
-        employee.printEmployee();
+        student.foiAprovado();
+
+        student.calculaPontosFaltantes();
+
     }
 }

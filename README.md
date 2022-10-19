@@ -1,13 +1,13 @@
-# Nome da aplicação: Calculadora de aumento salarial.
+# Nome da aplicação: Calculadora de média escolar.
 
 ## Descrição
-Programa java para mostrar salário liquido do funcionário, após aplicação de um aumento no salário bruto.
+Programa java para calcular a média anual de um aluno e definir se este aluno foi aprovado ou quantos pontos faltaram para a aprovação.
 
 ### Principais funcionalidades
-Calucular salário líquido.
+Calucular média anual e definir se o aluno foi aprovado ou não.
 
 ### Quem Consome
-Usuário que quer aumentar o salário de um funcionário.
+Usuário que quer calcular a média anual de um aluno.
 
 ### Dependencias
 Este programa não possui dependencias externas
