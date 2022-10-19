@@ -1,18 +1,18 @@
-#Nome da aplicação: Aplicação Luiz Roberto
+# Nome da aplicação: Aplicação Luiz Roberto
 
-##Descrição
+## Descrição
 Programa java para mostrar saalrio liquido do funcionario
 
-###Principais funcionalidades
+### Principais funcionalidades
 Mostra salario
 
-###Quem Consome
+### Quem Consome
 Usuario que quer aumentar o salario
 
-###Dependencias
+### Dependencias
 este programa não possui dependencias externas
 
-###Pré-requisitos de tecnologias ou dependencias
+### Pré-requisitos de tecnologias ou dependencias
 - java 11
 
 ### Instruções para executar localmente
