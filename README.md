@@ -1,13 +1,12 @@
-# Nome da aplicação: Calculadora de média escolar.
+# Nome da aplicação: Calculadora de conversão de moedas.
 
 ## Descrição
-Programa java para calcular a média anual de um aluno e definir se este aluno foi aprovado ou quantos pontos faltaram para a aprovação.
+Programa java para calcular o valor em reais a ser pago em uma transação de compra de dólares.
 
 ### Principais funcionalidades
-Calucular média anual e definir se o aluno foi aprovado ou não.
-
+Calucular quantos reais custaria a compra de determinada quantia de dólares, incluindo 6% de IOF.
 ### Quem Consome
-Usuário que quer calcular a média anual de um aluno.
+Usuário que quer comprar determinada quantia de dólares.
 
 ### Dependencias
 Este programa não possui dependencias externas
