@@ -1,16 +1,16 @@
-# Nome da aplicação: Aplicação Luiz Roberto
+# Nome da aplicação: Calculadora de aumento salarial.
 
 ## Descrição
-Programa java para mostrar saalrio liquido do funcionario
+Programa java para mostrar salário liquido do funcionário, após aplicação de um aumento no salário bruto.
 
 ### Principais funcionalidades
-Mostra salario
+Calucular salário líquido.
 
 ### Quem Consome
-Usuario que quer aumentar o salario
+Usuário que quer aumentar o salário de um funcionário.
 
 ### Dependencias
-este programa não possui dependencias externas
+Este programa não possui dependencias externas
 
 ### Pré-requisitos de tecnologias ou dependencias
 - java 11
