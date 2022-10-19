@@ -1,29 +1,27 @@
 package com.estudos;
 
+import com.estudos.entities.Employee;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        double valor;
-        int auxiliar;
 
-        System.out.println("Digite um valor entre 0 e 100:");
-        valor = sc.nextDouble();
+        Employee employee = new Employee();
 
-        auxiliar = (int)valor;
+        System.out.println("Type employee's name:");
+        employee.name = sc.nextLine();
+        System.out.println("Type employee's salary:");
+        employee.grossSalary = sc.nextDouble();
+        System.out.println("Type employee's tax value:");
+        employee.tax = sc.nextDouble();
 
+        employee.printEmployee();
 
-        if (auxiliar < 25 && auxiliar >= 0) {
-            System.out.println("O valor está no intervalo (0, 25)");
-        } else if (auxiliar >= 25 && auxiliar < 50) {
-            System.out.println("O valor está no intervalo (25, 50)");
-        } else if (auxiliar >= 50 && auxiliar < 75) {
-            System.out.println("O valor está no intervalo (50, 75)");
-        } else if (auxiliar >= 75 && auxiliar <= 100) {
-            System.out.println("O valor está no intervalo (75, 100)");
-        } else {
-            System.out.println("O valor está fora do intervalo.");
-        }
+        System.out.println("Which percentage to increase salary?");
+        employee.increaseSalary(sc.nextDouble());
+
+        employee.printEmployee();
     }
 }
