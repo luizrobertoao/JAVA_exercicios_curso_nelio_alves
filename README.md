@@ -16,7 +16,7 @@ Este programa não possui dependencias externas
 
 ### Instruções para executar localmente
 Para executar a aplicação é necessario os seguintes passos:\
-1- clonar projeto do github com o comando: git clone
+1- clonar projeto do github com o comando: **git clone** \
 2-Use esse link para o **clone**:
-`https://github.com/luizrobertoao/JAVA_exercicios_curso_nelio_alves.git`
-
+`https://github.com/luizrobertoao/JAVA_exercicios_curso_nelio_alves.git` \
+3-Usar o comando para alterar a branch: git checkout feature/introducaoPooEx3
