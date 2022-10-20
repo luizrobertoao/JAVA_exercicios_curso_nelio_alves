@@ -1,27 +1,44 @@
 package com.estudos;
 
-import com.estudos.entities.Pedido;
-import java.util.Scanner;
+import com.estudos.entities.Conta;
 
-import static com.estudos.util.CalculoDePedido.calculaIof;
-import static com.estudos.util.CalculoDePedido.calculaTotalPedido;
+import java.math.BigDecimal;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Pedido pedido = new Pedido();
+        Integer numeroDaConta;
+        String nomeTitularConta;
+        String depositoInicial;
 
-        System.out.println("Digite o nome da moeda:");
-        pedido.moeda.name = sc.nextLine();
-        System.out.println("Qual a cotação atual da moeda?");
-        pedido.moeda.cotacaoEmReal = sc.nextBigDecimal();
-        System.out.println("Qual a quantidade a ser comprada?");
-        pedido.quantidade = sc.nextDouble();
+        System.out.println("Digite o número da conta:");
+        numeroDaConta = sc.nextInt();
 
+        System.out.println("Digite o nome do titular da conta:");
+        sc.nextLine();
+        nomeTitularConta = sc.nextLine();
 
-        System.out.println("O valor a ser pago é de: R$" + calculaTotalPedido(pedido));
-        System.out.println("O valor do IOF nessa transação é de: " +  pedido.moeda.cotacaoEmReal.multiply(calculaIof(pedido.quantidade)));
+        System.out.println("Existe um depósito inicial (s/n)?");
+        depositoInicial = sc.nextLine();
 
+        Conta conta = new Conta(numeroDaConta, nomeTitularConta);
+
+        if(depositoInicial.equalsIgnoreCase("s")) {
+            System.out.println("Digite um valor para depósito inicial:");
+            conta.depositar(sc.nextBigDecimal());
+            System.out.println(conta);
+        } else {
+            System.out.println(conta);
+        }
+
+        System.out.println("\nDigite um valor para depósito:");
+        conta.depositar(sc.nextBigDecimal());
+        System.out.println(conta);
+
+        System.out.println("\nDigite um valor para saque:");
+        conta.sacar(sc.nextBigDecimal());
+        System.out.println(conta);
     }
 }

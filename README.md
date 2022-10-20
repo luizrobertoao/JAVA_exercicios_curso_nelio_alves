@@ -1,12 +1,12 @@
-# Nome da aplicação: Calculadora de conversão de moedas.
+# Nome da aplicação: Gerador de conta, depósito e saque.
 
 ## Descrição
-Programa java para calcular o valor em reais a ser pago em uma transação de compra de dólares.
+Programa java para cadastrar uma conta corrente e realizar operação de depósito e saque.
 
 ### Principais funcionalidades
-Calucular quantos reais custaria a compra de determinada quantia de dólares, incluindo 6% de IOF.
+Criar conta, depositar e sacar valor da conta.
 ### Quem Consome
-Usuário que quer comprar determinada quantia de dólares.
+Usuário que quer cadastrar, sacar ou depositar valores em uma conta.
 
 ### Dependencias
 Este programa não possui dependencias externas
@@ -19,4 +19,4 @@ Para executar a aplicação é necessario os seguintes passos:\
 1- clonar projeto do github com o comando: **git clone** \
 2-Use esse link para o **clone**:
 `https://github.com/luizrobertoao/JAVA_exercicios_curso_nelio_alves.git` \
-3-Usar o comando para alterar a branch: git checkout feature/introducaoPooEx3
+3-Usar o comando para alterar a branch: git checkout feature/contrutoresThisSobrecargaEncapsulamentoEx1 
