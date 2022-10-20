@@ -9,36 +9,24 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Integer numeroDaConta;
-        String nomeTitularConta;
-        String depositoInicial;
+        Integer quantidadeDeNumeros;
 
-        System.out.println("Digite o número da conta:");
-        numeroDaConta = sc.nextInt();
+        System.out.print("Quantos números você vai digitar? ");
+        quantidadeDeNumeros = sc.nextInt();
 
-        System.out.println("Digite o nome do titular da conta:");
-        sc.nextLine();
-        nomeTitularConta = sc.nextLine();
+        Integer[] vectNumeros = new Integer[quantidadeDeNumeros];
 
-        System.out.println("Existe um depósito inicial (s/n)?");
-        depositoInicial = sc.nextLine();
-
-        Conta conta = new Conta(numeroDaConta, nomeTitularConta);
-
-        if(depositoInicial.equalsIgnoreCase("s")) {
-            System.out.println("Digite um valor para depósito inicial:");
-            conta.depositar(sc.nextBigDecimal());
-            System.out.println(conta);
-        } else {
-            System.out.println(conta);
+        for (int i=0 ; i<vectNumeros.length ; i++) {
+            System.out.print("Digite um número: ");
+            vectNumeros[i] = sc.nextInt();
         }
 
-        System.out.println("\nDigite um valor para depósito:");
-        conta.depositar(sc.nextBigDecimal());
-        System.out.println(conta);
+        System.out.println("NÚMEROS NEGATIVOS:");
 
-        System.out.println("\nDigite um valor para saque:");
-        conta.sacar(sc.nextBigDecimal());
-        System.out.println(conta);
+        for (int i=0 ; i<vectNumeros.length ; i++) {
+            if (vectNumeros[i] < 0) {
+               System.out.println(vectNumeros[i]);
+           }
+        }
     }
 }
