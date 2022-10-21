@@ -1,16 +1,15 @@
-# Nome da aplicação: Registro de pessoas.
+# Nome da aplicação: Soma de vetores.
 
 ## Descrição
-Programa java para criar uma lista de pessoas e filtrar pessoas menores de 16 anos.
+Programa java para criar 2 vetores de números somá-los e imprimir o resultado.
 
 ### Principais funcionalidades
-- Receber uma lista de pessoas.
-- Calcular media de altura das pessoas na lista.
-- Calcular porcentagem de pessoas menores de 16 anos na lista.
-- Mostrar os nomes das pessoas menores de 16 anos.
+- Receber 2 listas de números.
+- Somar cada posição de uma lista com sua corespondente da segunda lista.
+- Imprimir o resultado de cada soma.
 
 ### Quem Consome
-Usuário que quer cadastrar uma lista de pessoas, calcular a media de altura e obter a porcentagem e os nomes do menores de 16 anos.
+Usuário que quer cadastrar 2 listas de números, calcular a soma de cada posição nas duas listas e imprimir o resultado.
 
 ### Dependencias
 Este programa não possui dependencias externas
@@ -23,4 +22,4 @@ Para executar a aplicação é necessario os seguintes passos:\
 1- clonar projeto do github com o comando: **git clone** \
 2-Use esse link para o **clone**:
 `https://github.com/luizrobertoao/JAVA_exercicios_curso_nelio_alves.git` \
-3-Usar o comando para alterar a branch: git checkout feature/vetoresEx2 
+3-Usar o comando para alterar a branch: git checkout feature/vetoresEx3 

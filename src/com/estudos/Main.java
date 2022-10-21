@@ -1,64 +1,40 @@
 package com.estudos;
 
-import com.estudos.entities.Pessoa;
-
-import java.math.BigDecimal;
 import java.util.Scanner;
-
-import static com.estudos.entities.Pessoa.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Integer numeroPessoas;
+        Integer numeroValores;
 
-        System.out.println("Quantas pessoas serao digitadas?");
-        numeroPessoas = sc.nextInt();
+        System.out.println("Quantas valores terá cada vetor?");
+        numeroValores = sc.nextInt();
 
-        Pessoa[] vectPessoas = new Pessoa[numeroPessoas];
+        Integer[] vectA = new Integer[numeroValores];
+        Integer[] vectB = new Integer[numeroValores];
+        Integer[] vectC = new Integer[numeroValores];
 
-        for (int i = 0 ; i < vectPessoas.length ; i++) {
+        System.out.println("Digite os " + numeroValores + " valores do vetor A:");
 
-            System.out.println("Dados da " + (i + 1) + "a pessoa:");
-
-            System.out.println("Nome: ");
-            sc.nextLine();
-            String nome = sc.nextLine();
-
-            System.out.println("Idade: ");
-            Integer idade = sc.nextInt();
-
-            System.out.println("Altura: ");
-            Double altura = sc.nextDouble();
-
-            vectPessoas[i] = new Pessoa(nome, idade, altura);
+        for (int i = 0; i < vectA.length; i++) {
+            vectA[i] = sc.nextInt();
         }
 
-        System.out.println("Altura média: " + calcularMediaAltura(vectPessoas));
-        System.out.println("Pessoas com menos de 16 anos: " + calcularPorcentagemMenores16(vectPessoas) + "%.");
-        imprimirNomesMenores16(vectPessoas);
+        System.out.println("Digite os " + numeroValores + "valores do vetor B:");
+
+        for (int i = 0; i < vectB.length; i++) {
+            vectB[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < vectC.length; i++) {
+            vectC[i] = vectA[i] + vectB[i];
+        }
+
+        System.out.println("Resultados das somas das posições correspondentes em A e B:");
+
+        for (int i = 0; i < vectC.length; i++) {
+            System.out.println(vectC[i]);
+        }
     }
-
-
-        /*Integer quantidadeDeNumeros;
-
-        System.out.print("Quantos números você vai digitar? ");
-        quantidadeDeNumeros = sc.nextInt();
-
-        Integer[] vectNumeros = new Integer[quantidadeDeNumeros];
-
-        for (int i=0 ; i<vectNumeros.length ; i++) {
-            System.out.print("Digite um número: ");
-            vectNumeros[i] = sc.nextInt();
-        }
-
-        System.out.println("NÚMEROS NEGATIVOS:");
-
-        for (int i=0 ; i<vectNumeros.length ; i++) {
-            if (vectNumeros[i] < 0) {
-               System.out.println(vectNumeros[i]);
-           }
-        }
-    }*/
 }
