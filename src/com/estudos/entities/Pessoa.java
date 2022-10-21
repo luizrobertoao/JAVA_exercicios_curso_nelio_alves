@@ -1,6 +1,7 @@
 package com.estudos.entities;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -33,17 +34,9 @@ public class Pessoa {
 
     public String filtrarPessoaMaisVelha(Pessoa[] pessoas) {
 
-        AtomicReference<Integer> idade = new AtomicReference<>(0);
-        AtomicReference<String> nome = new AtomicReference<>("");
-
-        List<Pessoa> pessoasList = Arrays.asList(pessoas);
-        pessoasList.forEach(pessoa -> {
-            if (pessoa.getIdade() > idade.get()){
-                idade.set(pessoa.getIdade());
-                nome.set(pessoa.getNome());
-            }
-        });
-        return nome.toString();
+        List<Pessoa> pessoaList = Arrays.asList(pessoas);
+        Pessoa pessoaMaisVelha = pessoaList.stream().max(Comparator.comparingInt(Pessoa::getIdade)).get();
+        return pessoaMaisVelha.getNome();
     }
 
     @Override
