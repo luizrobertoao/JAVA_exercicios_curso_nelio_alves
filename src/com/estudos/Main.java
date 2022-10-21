@@ -37,8 +37,6 @@ public class Main {
 
             funcionario = new Funcionario(nome, id, salario);
 
-//            Funcionario finalFuncionario = funcionario;
-//            Integer finalId = id;
             if (listaFuncionarios.stream().map(Funcionario::getId).filter(id::equals).findFirst().isPresent()) {
                 System.out.println("Este Id já existe.");
             } else {
@@ -61,7 +59,7 @@ public class Main {
         System.out.println("Lista de funcionarios atualizada:");
 
         for (Funcionario f : listaFuncionarios
-             ) {
+        ) {
             System.out.println(f.toString());
         }
 
