@@ -2,10 +2,7 @@ package com.estudos;
 
 import com.estudos.entities.Pessoa;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
-
-import static com.estudos.entities.Pessoa.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,16 +26,14 @@ public class Main {
             System.out.println("Idade: ");
             Integer idade = sc.nextInt();
 
-            System.out.println("Altura: ");
-            Double altura = sc.nextDouble();
-
-            vectPessoas[i] = new Pessoa(nome, idade, altura);
+            vectPessoas[i] = new Pessoa(nome, idade);
         }
 
-        System.out.println("Altura média: " + calcularMediaAltura(vectPessoas));
-        System.out.println("Pessoas com menos de 16 anos: " + calcularPorcentagemMenores16(vectPessoas) + "%.");
-        imprimirNomesMenores16(vectPessoas);
+        Pessoa pessoa = new Pessoa();
+
+        System.out.println("A pessoa mais velha é: " + pessoa.filtrarPessoaMaisVelha(vectPessoas));
     }
+
 
 
 }

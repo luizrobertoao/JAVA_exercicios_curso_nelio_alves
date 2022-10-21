@@ -3,12 +3,12 @@ package com.estudos.entities;
 public class Pessoa {
     private String nome;
     private Integer idade;
-    private Double altura;
 
-    public Pessoa(String nome, Integer idade, Double altura) {
+    public Pessoa() {
+    }
+    public Pessoa(String nome, Integer idade) {
         this.nome = nome;
         this.idade = idade;
-        this.altura = altura;
     }
 
     public String getNome() {
@@ -27,41 +27,19 @@ public class Pessoa {
         this.idade = idade;
     }
 
-    public Double getAltura() {
-        return altura;
-    }
+    public String filtrarPessoaMaisVelha(Pessoa[] pessoas) {
 
-    public void setAltura(Double altura) {
-        this.altura = altura;
-    }
+        Integer idade = 0;
+        String nome = "";
 
-    public static Double calcularMediaAltura(Pessoa[] pessoas) {
-        Double media = 0.0;
-        Double soma = 0.0;
         for (int i = 0; i < pessoas.length; i++) {
-            Double altura = pessoas[i].altura;
-            soma = altura + soma;
-        }
-        media = soma / pessoas.length;
-        return media;
-    }
 
-    public static Double calcularPorcentagemMenores16(Pessoa[] pessoas) {
-        Integer quantidadeMenores16 = 0;
-        for (int i = 0; i < pessoas.length; i++) {
-            if (pessoas[i].idade < 16) {
-                quantidadeMenores16++;
+            if (pessoas[i].idade > idade) {
+                idade = pessoas[i].getIdade();
+                nome = pessoas[i].getNome();
             }
         }
-        return (quantidadeMenores16 * 100) / Double.valueOf(pessoas.length);
-    }
-
-    public static void imprimirNomesMenores16(Pessoa[] pessoas) {
-        for (int i = 0; i < pessoas.length; i++) {
-            if (pessoas[i].idade < 16) {
-                System.out.println(pessoas[i].nome);
-            }
-        }
+        return nome;
     }
 
     @Override
@@ -69,7 +47,6 @@ public class Pessoa {
         return "Pessoa{" +
                 "nome='" + nome + '\'' +
                 ", idade=" + idade +
-                ", altura=" + altura +
                 '}';
     }
 }
