@@ -2,6 +2,7 @@ package com.estudos;
 
 import com.estudos.entities.Pessoa;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {

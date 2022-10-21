@@ -1,5 +1,9 @@
 package com.estudos.entities;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+
 public class Pessoa {
     private String nome;
     private Integer idade;
@@ -29,17 +33,17 @@ public class Pessoa {
 
     public String filtrarPessoaMaisVelha(Pessoa[] pessoas) {
 
-        Integer idade = 0;
-        String nome = "";
+        AtomicReference<Integer> idade = new AtomicReference<>(0);
+        AtomicReference<String> nome = new AtomicReference<>("");
 
-        for (int i = 0; i < pessoas.length; i++) {
-
-            if (pessoas[i].idade > idade) {
-                idade = pessoas[i].getIdade();
-                nome = pessoas[i].getNome();
+        List<Pessoa> pessoasList = Arrays.asList(pessoas);
+        pessoasList.forEach(pessoa -> {
+            if (pessoa.getIdade() > idade.get()){
+                idade.set(pessoa.getIdade());
+                nome.set(pessoa.getNome());
             }
-        }
-        return nome;
+        });
+        return nome.toString();
     }
 
     @Override
