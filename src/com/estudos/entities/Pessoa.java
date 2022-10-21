@@ -49,7 +49,7 @@ public class Pessoa {
     public static Double calcularPorcentagemMenores16(Pessoa[] pessoas) {
         Integer quantidadeMenores16 = 0;
         for (int i = 0; i < pessoas.length; i++) {
-            if (pessoas[i].idade < 16){
+            if (pessoas[i].idade < 16) {
                 quantidadeMenores16++;
             }
         }
@@ -58,7 +58,7 @@ public class Pessoa {
 
     public static void imprimirNomesMenores16(Pessoa[] pessoas) {
         for (int i = 0; i < pessoas.length; i++) {
-            if (pessoas[i].idade < 16){
+            if (pessoas[i].idade < 16) {
                 System.out.println(pessoas[i].nome);
             }
         }

@@ -18,7 +18,7 @@ public class Main {
 
         Pessoa[] vectPessoas = new Pessoa[numeroPessoas];
 
-        for (int i = 0 ; i < vectPessoas.length ; i++) {
+        for (int i = 0; i < vectPessoas.length; i++) {
 
             System.out.println("Dados da " + (i + 1) + "a pessoa:");
 
@@ -41,24 +41,4 @@ public class Main {
     }
 
 
-        /*Integer quantidadeDeNumeros;
-
-        System.out.print("Quantos números você vai digitar? ");
-        quantidadeDeNumeros = sc.nextInt();
-
-        Integer[] vectNumeros = new Integer[quantidadeDeNumeros];
-
-        for (int i=0 ; i<vectNumeros.length ; i++) {
-            System.out.print("Digite um número: ");
-            vectNumeros[i] = sc.nextInt();
-        }
-
-        System.out.println("NÚMEROS NEGATIVOS:");
-
-        for (int i=0 ; i<vectNumeros.length ; i++) {
-            if (vectNumeros[i] < 0) {
-               System.out.println(vectNumeros[i]);
-           }
-        }
-    }*/
 }
