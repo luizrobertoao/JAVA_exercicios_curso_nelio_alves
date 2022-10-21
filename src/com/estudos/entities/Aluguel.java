@@ -7,6 +7,7 @@ public class Aluguel {
 
     public Aluguel() {
     }
+
     public Aluguel(String nomeAluno, String emailAluno, Integer quartoEscolhido) {
         this.nomeAluno = nomeAluno;
         this.emailAluno = emailAluno;
@@ -39,9 +40,9 @@ public class Aluguel {
 
     public void gerarRelatorioOcupacao(Aluguel[] vectAlugueis) {
         for (int i = 0; i < vectAlugueis.length; i++) {
-           if (vectAlugueis[i] != null) {
-               System.out.println(vectAlugueis[i].quartoEscolhido + ": " + vectAlugueis[i].nomeAluno + ", " + vectAlugueis[i].emailAluno);
-           }
+            if (vectAlugueis[i] != null) {
+                System.out.println(vectAlugueis[i].quartoEscolhido + ": " + vectAlugueis[i].nomeAluno + ", " + vectAlugueis[i].emailAluno);
+            }
         }
     }
 
