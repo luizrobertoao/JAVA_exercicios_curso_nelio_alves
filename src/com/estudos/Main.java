@@ -1,67 +1,68 @@
 package com.estudos;
 
-import com.estudos.entities.Funcionario;
+import com.estudos.entities.ContratoHora;
+import com.estudos.entities.Departamento;
+import com.estudos.entities.Empregado;
+import com.estudos.entities.NivelEmpregadoEnum;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Integer numeroFuncionarios = 0;
-
-        System.out.println("Quantos funcionarios serao registrados?");
-        numeroFuncionarios = sc.nextInt();
-
-        List<Funcionario> listaFuncionarios = new ArrayList<>();
-
-        for (int i = 0; i < numeroFuncionarios; i++) {
-            String nome = "";
-            Integer id = 0;
-            BigDecimal salario = BigDecimal.ZERO;
-            Funcionario funcionario = new Funcionario();
-
-            System.out.println("Funcionario #" + (i + 1) + ":");
-            System.out.print("Id: ");
-            id = sc.nextInt();
-
-            System.out.print("Nome: ");
-            nome = sc.next();
-
-            System.out.print("Salario: ");
-            salario = sc.nextBigDecimal();
-
-            funcionario = new Funcionario(nome, id, salario);
-
-            if (listaFuncionarios.stream().map(Funcionario::getId).filter(id::equals).findFirst().isPresent()) {
-                System.out.println("Este Id já existe.");
-            } else {
-                listaFuncionarios.add(funcionario);
-            }
-        }
-        System.out.print("Digite o id do funcionario que recebera o aumento: ");
+        System.out.print("Entre o nome do departamento: ");
+        Departamento departamento = new Departamento(sc.next());
         System.out.println();
-        Integer idFuncionario = sc.nextInt();
-        System.out.println("Digite a porcentagem do aumento:");
-        Double aumento = sc.nextDouble();
 
-        Funcionario funcionarioAtualizado = listaFuncionarios.stream()
-                .filter(f -> f.getId() == idFuncionario)
-                .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("Funcionario não existe"));
+        sc.nextLine();
+        System.out.println("Digite os dados do empregado: ");
+        System.out.print("Nome: ");
+        String nomeEmpregado = sc.nextLine();
+        System.out.print("Nivel: ");
+        NivelEmpregadoEnum nivel = NivelEmpregadoEnum.valueOf(sc.nextLine());
+        System.out.print("Salario base: ");
+        BigDecimal salarioBase = sc.nextBigDecimal();
 
-        funcionarioAtualizado.aumentarSalario(aumento, funcionarioAtualizado);
+        Empregado empregado = new Empregado(nomeEmpregado, nivel, salarioBase, departamento);
 
-        System.out.println("Lista de funcionarios atualizada:");
+        sc.nextLine();
+        System.out.print("Quantos contratos o empregado tera? ");
+        Integer numeroContratos = sc.nextInt();
 
-        for (Funcionario f : listaFuncionarios
-        ) {
-            System.out.println(f.toString());
+        DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        for (int i = 0; i < numeroContratos; i++) {
+
+            sc.nextLine();
+            System.out.println("Digite os dados do contrato #" + (i + 1) + ":");
+            System.out.print("Data: ");
+            LocalDate dataContrato = LocalDate.parse(sc.nextLine(), formatoData);
+            System.out.print("Valor por hora: ");
+            Double valorPorHora = sc.nextDouble();
+            System.out.print("Duracao em horas: ");
+            Integer horas = sc.nextInt();
+
+            ContratoHora contrato = new ContratoHora(dataContrato, valorPorHora, horas);
+
+            empregado.adicionarContrato(contrato);
+
         }
 
+        sc.nextLine();
+        System.out.print("Digite o mes e o ano para calcular a receita (MM/YYYY): ");
+        String dataReceita = sc.nextLine();
+        LocalDate data = LocalDate.parse(("01/" + dataReceita), formatoData);
+
+        BigDecimal receita = empregado.receitaMensal(data);
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+
+        System.out.println("Nome: " + empregado.getNome());
+        System.out.println("Departamento: " + empregado.getDepartamento().getNome());
+        System.out.println("Receita em " + dataReceita + ": " + nf.format(receita));
     }
 }
