@@ -1,7 +1,7 @@
 package com.estudos.entities;
 
 public class Departamento {
-    String nome;
+    private String nome;
 
     public Departamento(String nome) {
         this.nome = nome;
@@ -14,5 +14,4 @@ public class Departamento {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 }

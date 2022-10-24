@@ -3,9 +3,9 @@ package com.estudos.entities;
 import java.time.LocalDate;
 
 public class ContratoHora {
-    LocalDate data;
-    Double valorPorHora;
-    Integer horas;
+    private LocalDate data;
+    private Double valorPorHora;
+    private Integer horas;
 
     public ContratoHora(LocalDate data, Double valorPorHora, Integer horas) {
         this.data = data;
@@ -35,5 +35,9 @@ public class ContratoHora {
 
     public void setHoras(Integer horas) {
         this.horas = horas;
+    }
+
+    public Double valorContrato() {
+        return valorPorHora * horas;
     }
 }

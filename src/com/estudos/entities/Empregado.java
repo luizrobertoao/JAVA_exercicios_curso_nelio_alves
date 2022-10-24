@@ -4,14 +4,13 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Empregado {
-    String nome;
-    NivelEmpregadoEnum nivel;
-    BigDecimal salarioBase;
-    Departamento departamento;
-    List<ContratoHora> contratos = new ArrayList<>();
+    private String nome;
+    private NivelEmpregadoEnum nivel;
+    private BigDecimal salarioBase;
+    private Departamento departamento;
+    private List<ContratoHora> contratos = new ArrayList<>();
 
     public Empregado(String nome, NivelEmpregadoEnum nivel, BigDecimal salarioBase, Departamento departamento) {
         this.nome = nome;
@@ -62,27 +61,14 @@ public class Empregado {
 
     public BigDecimal receitaMensal(LocalDate data) {
 
-        AtomicReference<BigDecimal> receita = new AtomicReference<>(BigDecimal.ZERO);
-        List<ContratoHora> contratosNoMes = new ArrayList<>();
+        final BigDecimal[] somaReceita = {salarioBase};
 
         contratos.forEach(c -> {
             if ((c.getData().getYear() == data.getYear()) && (c.getData().getMonth() == data.getMonth())) {
-                contratosNoMes.add(c);
+                somaReceita[0] = somaReceita[0].add(BigDecimal.valueOf(c.valorContrato()));
             }
         });
-
-        final BigDecimal[] somaReceita = {BigDecimal.ZERO};
-
-        contratosNoMes.forEach(c -> {
-
-            Integer quantidadeHoras = c.getHoras();
-            Double valorDaHora = c.getValorPorHora();
-            BigDecimal valorContrato = BigDecimal.valueOf(quantidadeHoras * valorDaHora);
-            somaReceita[0] = somaReceita[0].add(valorContrato);
-
-
-        });
-        return somaReceita[0].add(salarioBase);
+        return somaReceita[0];
     }
 
 }
