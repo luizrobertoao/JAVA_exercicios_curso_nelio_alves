@@ -1,13 +1,11 @@
 package com.estudos;
 
-import com.estudos.entities.ContratoHora;
-import com.estudos.entities.Departamento;
-import com.estudos.entities.Empregado;
-import com.estudos.entities.NivelEmpregadoEnum;
+import com.estudos.entities.*;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
@@ -15,54 +13,59 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Entre o nome do departamento: ");
-        Departamento departamento = new Departamento(sc.next());
-        System.out.println();
-
-        sc.nextLine();
-        System.out.println("Digite os dados do empregado: ");
-        System.out.print("Nome: ");
-        String nomeEmpregado = sc.nextLine();
-        System.out.print("Nivel: ");
-        NivelEmpregadoEnum nivel = NivelEmpregadoEnum.valueOf(sc.nextLine());
-        System.out.print("Salario base: ");
-        BigDecimal salarioBase = sc.nextBigDecimal();
-
-        Empregado empregado = new Empregado(nomeEmpregado, nivel, salarioBase, departamento);
-
-        sc.nextLine();
-        System.out.print("Quantos contratos o empregado tera? ");
-        Integer numeroContratos = sc.nextInt();
-
         DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        for (int i = 0; i < numeroContratos; i++) {
+        System.out.println("Digite os dados do cliente: ");
+        System.out.print("Nome: ");
+        String nomeCliente = sc.nextLine();
+        System.out.print("Email: ");
+        String emailCliente = sc.nextLine();
+        System.out.print("Data de nascimento: ");
+        LocalDate dataNascimento = LocalDate.parse(sc.nextLine(), formatoData);
 
+        Cliente cliente = new Cliente(nomeCliente, emailCliente, dataNascimento);
+
+        System.out.println("Digite os dados do pedido: ");
+        System.out.print("Status do pedido: ");
+        StatusPedidoEnum statusPedido = StatusPedidoEnum.valueOf(sc.nextLine());
+        System.out.println("Quantos itens contem esse pedido? ");
+        Integer quantidadeItens = sc.nextInt();
+
+        LocalDateTime dataPedido = LocalDateTime.now();
+
+        Pedido pedido = new Pedido(dataPedido, statusPedido, cliente);
+        Produto produto;
+
+        for (int i = 0; i < quantidadeItens; i++) {
+            System.out.println("Digite os dados do item #" + (i + 1) + ":");
+            System.out.print("Nome: ");
             sc.nextLine();
-            System.out.println("Digite os dados do contrato #" + (i + 1) + ":");
-            System.out.print("Data: ");
-            LocalDate dataContrato = LocalDate.parse(sc.nextLine(), formatoData);
-            System.out.print("Valor por hora: ");
-            Double valorPorHora = sc.nextDouble();
-            System.out.print("Duracao em horas: ");
-            Integer horas = sc.nextInt();
+            String nomeProduto = sc.nextLine();
+            System.out.print("Preco: ");
+            BigDecimal precoProduto = sc.nextBigDecimal();
+            System.out.print("Quantidade: ");
+            Integer quantidadeProduto = sc.nextInt();
 
-            ContratoHora contrato = new ContratoHora(dataContrato, valorPorHora, horas);
-
-            empregado.adicionarContrato(contrato);
-
+            produto = new Produto(nomeProduto, precoProduto);
+            pedido.adicionarItem(new ItemPedido(quantidadeProduto, produto));
         }
 
-        sc.nextLine();
-        System.out.print("Digite o mes e o ano para calcular a receita (MM/YYYY): ");
-        String dataReceita = sc.nextLine();
-        LocalDate data = LocalDate.parse(("01/" + dataReceita), formatoData);
-
-        BigDecimal receita = empregado.receitaMensal(data);
+        DateTimeFormatter formatoDataPedido = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         NumberFormat nf = NumberFormat.getCurrencyInstance();
 
-        System.out.println("Nome: " + empregado.getNome());
-        System.out.println("Departamento: " + empregado.getDepartamento().getNome());
-        System.out.println("Receita em " + dataReceita + ": " + nf.format(receita));
+        System.out.println("RESUMO DO PEDIDO:");
+        System.out.println("Momento: " + pedido.getMomento().format(formatoDataPedido));
+        System.out.println("Status: " + pedido.getStatus());
+        System.out.println("Cliente: " + cliente.getNome() + " "
+                + cliente.getDataNascimento().format(formatoData) + " "
+                + "- "
+                + cliente.getEmail());
+        System.out.println("Itens do pedido:");
+        pedido.getItensPedido().forEach(i -> {
+            System.out.println(i.getProduto().getNome() + ", "
+                    + "Quantidade: " + i.getQuantidade() + ", "
+                    + "Subtotal: " + nf.format(i.subTotal(i)));
+        });
+        System.out.println("Total: " + nf.format(pedido.totalPedido()));
     }
 }

@@ -1,16 +1,16 @@
-# Nome da aplicação: Cadastro de funcionarios e calculo de receita no mes.
+# Nome da aplicação: Registro de pedidos.
 
 ## Descrição
-Programa java para criar registro de funcionario, seus contratos e calcular receita mensal.
+Programa java para criar registro de um pedido e calcular o valor total do pedido.
 
 ### Principais funcionalidades
-- Receber registro do funcionario, seu departamento, salario base.
-- Adicionar contratos do funcionario, com data, valor por hora e quantidade de horas.
-- Calcular receita total do funcionario em determinado mes.
-- Imprimir dados do funcionario e receita em um determinado mes.
+- Receber registro do cliente.
+- Receber itens do pedido.
+- Calcular subtotal (valor de cada item do pedido) e o total do pedido.
+- Imprimir dados do pedido, do cliente, bem como dos produtos no pedido com subtotal e total.
 
 ### Quem Consome
-Usuário que quer cadastrar funcionarios, seus contratos e calcular a receita desse funcionario em um determinado mes.
+Usuário que quer cadastrar o pedido de um determinado cliente e calcular o total a pagar.
 
 ### Dependencias
 Este programa não possui dependencias externas
@@ -23,4 +23,4 @@ Para executar a aplicação é necessario os seguintes passos:\
 1- clonar projeto do github com o comando: **git clone** \
 2-Use esse link para o **clone**:
 `https://github.com/luizrobertoao/JAVA_exercicios_curso_nelio_alves.git` \
-3-Usar o comando para alterar a branch: git checkout feature/composicaoExResolvido1 
+3-Usar o comando para alterar a branch: git checkout feature/composicaoEx2 
