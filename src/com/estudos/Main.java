@@ -13,7 +13,7 @@ public class Main {
 
         List<Empregado> empregados = new ArrayList<>();
 
-        System.out.println("Digite o numero de funcionarios:");
+        System.out.print("Digite o numero de funcionarios: ");
         Integer numeroFuncionarios = sc.nextInt();
 
         for (int i = 0; i < numeroFuncionarios; i++) {
@@ -28,17 +28,18 @@ public class Main {
             Integer horas = sc.nextInt();
             System.out.print("Valor por hora: ");
             BigDecimal valorHora = sc.nextBigDecimal();
-            Empregado empregado;
 
             if (terceirizacao == 's') {
                 System.out.print("Taxa Adicional: ");
                 BigDecimal taxaAdicional = sc.nextBigDecimal();
-                empregado = new EmpregadoTerceirizado(nome, horas, valorHora, taxaAdicional);
-                empregados.add(empregado);
+                empregados.add(new EmpregadoTerceirizado(nome, horas, valorHora, taxaAdicional));
             } else {
-                empregado = new Empregado(nome, horas, valorHora);
-                empregados.add(empregado);
+                empregados.add(new Empregado(nome, horas, valorHora));
             }
         }
+        System.out.println("SALARIOS:");
+        empregados.forEach(empregado -> {
+            System.out.println(empregado.toString());
+        });
     }
 }

@@ -2,7 +2,7 @@ package com.estudos.entities;
 
 import java.math.BigDecimal;
 
-public class EmpregadoTerceirizado extends Empregado{
+public class EmpregadoTerceirizado extends Empregado {
     private BigDecimal taxaAdicional = BigDecimal.ZERO;
 
     public EmpregadoTerceirizado() {
@@ -26,4 +26,5 @@ public class EmpregadoTerceirizado extends Empregado{
     public BigDecimal pagamento() {
         return taxaAdicional.multiply(BigDecimal.valueOf(1.1)).add(super.getValorHora().multiply(BigDecimal.valueOf(super.getHoras())));
     }
+
 }

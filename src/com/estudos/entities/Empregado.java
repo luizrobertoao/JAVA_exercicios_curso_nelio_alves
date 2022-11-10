@@ -1,11 +1,14 @@
 package com.estudos.entities;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 
 public class Empregado {
     private String nome;
     private Integer horas;
     private BigDecimal valorHora = BigDecimal.ZERO;
+
+    NumberFormat nf = NumberFormat.getCurrencyInstance();
 
     public Empregado() {
     }
@@ -42,5 +45,10 @@ public class Empregado {
 
     public BigDecimal pagamento() {
         return valorHora.multiply(BigDecimal.valueOf(horas));
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - " + nf.format(pagamento());
     }
 }
