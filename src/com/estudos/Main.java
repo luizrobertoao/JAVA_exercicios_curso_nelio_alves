@@ -1,10 +1,8 @@
 package com.estudos;
 
 import com.estudos.entities.*;
+import com.estudos.entities.enunms.Cor;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,44 +11,34 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.print("Digite a quantidade de formas: ");
+        Integer quantidadeFormas = sc.nextInt();
+        List<Forma> formas = new ArrayList<>();
 
-        List<Produto> produtos = new ArrayList<>();
+        for (int i = 0; i < quantidadeFormas; i++) {
+            System.out.print("Dados da forma #" + (i + 1) + ": ");
+            System.out.print("Retangulo ou circulo (r/c): ");
+            char tipoForma = sc.next().charAt(0);
+            System.out.print("Cor (PRETO/AZUL/VERMELHO): ");
+            Cor cor = Cor.valueOf(sc.next());
 
-        System.out.print("Digite o numero de produtos: ");
-        Integer numeroProdutos = sc.nextInt();
-
-        for (int i = 0; i < numeroProdutos; i++) {
-            System.out.println("Dados do Produto #" + (i + 1) + ":");
-            System.out.print("Comum, usado ou importado (c/u/i)? ");
-            char condicao = sc.next().charAt(0);
-            sc.nextLine();
-            System.out.print("Nome: ");
-            String nome = sc.nextLine();
-            System.out.print("Preco: ");
-            BigDecimal preco = sc.nextBigDecimal();
-
-            switch (condicao) {
-                case 'c':
-                    produtos.add(new Produto(nome, preco));
-                    break;
-                case 'u':
-                    sc.nextLine();
-                    System.out.print("Data de fabricacao (dd/mm/aaaa): ");
-                    LocalDate dataFabricacao = LocalDate.parse(sc.nextLine(), formatoData);
-                    produtos.add(new ProdutoUsado(nome, preco, dataFabricacao));
-                    break;
-                case 'i':
-                    System.out.print("Taxa alfandegaria: ");
-                    BigDecimal taxaAlfandega = sc.nextBigDecimal();
-                    produtos.add(new ProdutoImportado(nome, preco, taxaAlfandega));
-                    break;
+            if (tipoForma == 'r') {
+                System.out.print("Largura: ");
+                Double largura = sc.nextDouble();
+                System.out.print("Altura: ");
+                Double altura = sc.nextDouble();
+                Forma forma = new Retangulo(cor, largura, altura);
+                formas.add(forma);
+            } else {
+                System.out.print("Raio: ");
+                Double raio = sc.nextDouble();
+                Forma forma = new Circulo(cor, raio);
+                formas.add(forma);
             }
         }
-
-        System.out.println("ETIQUETAS DE PRECO:");
-        produtos.forEach(produto -> {
-            produto.etiquetaPreco();
+        System.out.println("AREA DAS FORMAS:");
+        formas.forEach(forma -> {
+            System.out.println(String.format("%.2f", forma.calcularArea()));
         });
     }
 }
