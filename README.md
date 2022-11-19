@@ -1,16 +1,16 @@
-# Nome da aplicação: Cadastro de funcionarios e calculo de receita no mes.
+# Nome da aplicação: Aplicacoes de pratica de tratamento de excecoes.
 
 ## Descrição
-Programa java para criar registro de funcionario, seus contratos e calcular receita mensal.
+Programa java para fixar conhecimentos em tratamento de excecoes. Serao criados 3 commits com diferentes solucoes para o tratamento das excecoes. 
 
 ### Principais funcionalidades
-- Receber registro do funcionario, seu departamento, salario base.
-- Adicionar contratos do funcionario, com data, valor por hora e quantidade de horas.
-- Calcular receita total do funcionario em determinado mes.
-- Imprimir dados do funcionario e receita em um determinado mes.
+- Registrar a reserva de um quarto de hotel seguindo regras para as datas da reserva.
+- Atualizar a data da reserva.
+- Mostrar mensagens de erro a cada entrada de dados errada.
+- Imprimir dados da reserva quando criada com sucesso.
 
 ### Quem Consome
-Usuário que quer cadastrar funcionarios, seus contratos e calcular a receita desse funcionario em um determinado mes.
+Usuário que quer cadastrar a reserva de um quarto de hotel.
 
 ### Dependencias
 Este programa não possui dependencias externas
@@ -23,4 +23,4 @@ Para executar a aplicação é necessario os seguintes passos:\
 1- clonar projeto do github com o comando: **git clone** \
 2-Use esse link para o **clone**:
 `https://github.com/luizrobertoao/JAVA_exercicios_curso_nelio_alves.git` \
-3-Usar o comando para alterar a branch: git checkout feature/composicaoExResolvido1 
+3-Usar o comando para alterar a branch: git checkout feature/tratamentoExcecoesExAula173 
