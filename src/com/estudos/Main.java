@@ -32,16 +32,13 @@ public class Main {
             System.out.print("Data do check-out (dd/mm/aaaa): ");
             checkOut = LocalDate.parse(sc.next(), formatoData);
 
-            LocalDate hoje = LocalDate.now();
-
-            if(checkIn.isBefore(hoje) || checkOut.isBefore(hoje)) {
-                System.out.println("Erro na reserva: As datas para atualizacao da reserva devem ser futuras.");
-            } else if(!checkOut.isAfter(checkIn)) {
-                System.out.println("Erro na reserva: A data de check-out nao deve ser anterior a data de check-in");
+            String error = reserva.atualizarDatas(checkIn, checkOut);
+            if(error != null) {
+                System.out.println(error);
             } else {
-                reserva.atualizarDatas(checkIn, checkOut);
                 System.out.println(reserva);
             }
+
 
 
         }
