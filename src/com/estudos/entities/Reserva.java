@@ -1,5 +1,7 @@
 package com.estudos.entities;
 
+import com.estudos.Exceptions.DomainException;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -11,7 +13,10 @@ public class Reserva {
 
     public static DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public Reserva(Integer numeroQuarto, LocalDate checkIn, LocalDate checkOut) {
+    public Reserva(Integer numeroQuarto, LocalDate checkIn, LocalDate checkOut) throws DomainException {
+        if (!checkOut.isAfter(checkIn)) {
+            throw new DomainException("Erro na reserva: A data de check-out nao deve ser anterior a data de check-in");
+        }
         this.numeroQuarto = numeroQuarto;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
@@ -38,17 +43,16 @@ public class Reserva {
         return duracao;
     }
 
-    public String atualizarDatas(LocalDate checkIn, LocalDate checkOut){
+    public void atualizarDatas(LocalDate checkIn, LocalDate checkOut) throws DomainException {
         LocalDate hoje = LocalDate.now();
-        if(checkIn.isBefore(hoje) || checkOut.isBefore(hoje)) {
-           return "Erro na reserva: As datas para atualizacao da reserva devem ser futuras.";
+        if (checkIn.isBefore(hoje) || checkOut.isBefore(hoje)) {
+            throw new DomainException("Erro na reserva: As datas para atualizacao da reserva devem ser futuras.");
         }
-        if(!checkOut.isAfter(checkIn)) {
-            return "Erro na reserva: A data de check-out nao deve ser anterior a data de check-in";
+        if (!checkOut.isAfter(checkIn)) {
+            throw new DomainException("Erro na reserva: A data de check-out nao deve ser anterior a data de check-in");
         }
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        return null;
     }
 
     @Override
